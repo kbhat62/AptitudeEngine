@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel ="icon" href="{{ url_for('static',filename ="images/logo.png") }}" type="image/x-icon"/>
+  <title>Aptitude Engine</title>
+  <script type ="text/javascript" src="{{ url_for('static',filename ="JS/MaterialUi.js") }}"></script>
+  <link href="{{ url_for('static',filename ="CSS/material.css") }}" rel="stylesheet"/>
+</head>
+<body>
+  <img src="{{ url_for('static',filename ="images/logo-home.png") }}" id = "logo"/>
+  <div class="center" id="ques-wrap" >
+  <input type="text" placeholder="Aptitude Question" id="ques" onkeypress="handleKeyPress(event)"/>
+  <button type="button" id="solve" class="theme" title="Solve" onclick="ajaxCode()">
+  Solve
+  </button>
+</div>
+<div id="about-us">
+  <span>How to use Aptitude Engine?</span>
+</div>
+<div id="container">
+<div class="card" id ="sol">
+  <span id="question">Question </span>
+  <span id="q-type">Question type > Number Series </span>
+  <div class="card theme" id="result">
+
+</div>
+<div id="sol-container">
+
+</div>
+</div>
+<div class="card" id ="rel">
+  <span id ="rel-text"> Related Questions </span>
+  <div class ="rel-ques">
+  <a href="#">
+    Some related question goes here
+  </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+  <a href="#">
+    Some related question goes here
+  </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+  <a href="#">
+    Some related question goes here
+  </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+  <a href="#">
+    Some related question goes here
+  </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+  <a href="#">
+    Some related question goes here
+  </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+  <div class ="rel-ques">
+    <a href="#">
+      Some related question goes here
+    </a>
+  </div>
+</div>
+</div>
+</body>
+</html>
