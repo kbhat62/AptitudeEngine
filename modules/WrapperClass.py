@@ -2,15 +2,22 @@
 import re
 import sys
 import solve_series as s
+
+#used to format the solution dictionary
 def format_solution(sol_dict):
     if not sol_dict:
         print("The above problem is not supported")
         sys.exit(0)
-    k = sorted(sol_dict)
-    print(k)
-    for step in k:
-        print(step+" : "+sol_dict[step])
+    if sol_dict == -1:
+        print("Invalid Question")
+    if sol_dict == -2:
+        print("The above series is not yet supported")
+    print(sol_dict['result'])
+    steps = sol_dict['steps']
+    for i in range(len(steps)):
+        print("Step"+str(i+1)+" : "+steps[i])
 
+#analyses the question and calls the solution module
 def questionAnalyser(ques):
     findPos = -1
     tp = 0
@@ -24,12 +31,12 @@ def questionAnalyser(ques):
         series_list = series.split(',')
         series_list = series_list[:len(series_list)-1]
         for i in range(len(series_list)):
-            if not series_list[i].isdigit():
+            if series_list[i] == '-' or series_list[i] == '_' or isinstance(eval(series_list[i]),str):
                 #position of - or _ if present
                 #since last item contains ...
                  findPos = i
-                 break
-            series_list[i] = int(series_list[i])
+            else:
+                series_list[i] = eval(series_list[i])
         if ( findPos != -1 ) :
             #if missing number is present in series
             odict = s.solveSeries(series_list,findPos,tp)
@@ -47,7 +54,7 @@ def questionAnalyser(ques):
     else:
         return -2;
 def main():
-    print("Aptitude Engine v0.1 alpha")
+    print("Aptitude Engine v0.2 alpha")
     print("Works for AP,GP and HP series problems")
     ques = input("Question:")
     sol_dict = questionAnalyser(ques)
