@@ -61,7 +61,7 @@ class MySQLInterface:
     # used to close the connection with database typically called when all
     # operations are completed with the database
     def get_last_insert_id():
-        return seld.__cursor.lastrowid
-        
+        return self.__cursor.lastrowid
+
     def close(self):
         self.__db.close()

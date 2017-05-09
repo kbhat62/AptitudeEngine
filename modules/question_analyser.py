@@ -6,6 +6,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.stem import WordNetLemmatizer
 import re
+import pickle
 class QuestionAnalyser:
     def __init__(self,location,filenames,labels):
         self.__loc = location
@@ -93,10 +94,27 @@ class QuestionAnalyser:
         del self.__data
         #here the classifier algorithm should come
         classifier = nltk.NaiveBayesClassifier.train(feature_sets)
-        self.__classifier = classifier
+        nb = open("nb.pickle","wb")
+        pickle.dump(classifier, nb)
+        nb.close()
+        fs = open("fs.pickle","wb")
+        pickle.dump(self.__feature_set,fs)
+        fs.close()
 
 
     def predict(self,question):
-            words = self.__preprocess_question(question)
-            question_features = self.__get_features(words)
-            return self.__classifier.classify(question_features)
+        nb = open("nb.pickle","rb")
+        classifier = pickle.load(nb)
+        nb.close()
+        fs = open("fs.pickle","rb")
+        self.__feature_set = pickle.load(fs)
+        fs.close()
+        stop_words = set(stopwords.words('english'))
+        stop_words.add('the')
+        stop_words.add('.')
+        stop_words.add('?')
+        stop_words.add(',')
+        self.__stop_words = stop_words
+        words = self.__preprocess_question(question)
+        question_features = self.__get_features(words)
+        return classifier.classify(question_features)

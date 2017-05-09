@@ -69,7 +69,7 @@ def feedback():
     ae.feedback(data)
     ae.disconnect()
     return "submitted"
+
 if __name__ == '__main__':
     analyser = q.QuestionAnalyser(dataset_location,dataset_files,dataset_labels)
-    analyser.train()
     app.run('0.0.0.0',8085,debug=True)

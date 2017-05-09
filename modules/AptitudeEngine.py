@@ -60,7 +60,6 @@ def solve(analyser,question):
                         id = ae.check_question(question)
                         if id == False:
                             output['id'] = ae.insert_question(question,output)
-                            pass
                         else:
                              output['id'] = id
 
@@ -77,7 +76,6 @@ def main():
     print("Works for AP,GP,HP, Difference in AP,GP,HP and even odd relations")
     question = input("Question:")
     analyser = q.QuestionAnalyser(dataset_location,dataset_files,dataset_labels)
-    analyser.train()
     solve(analyser,question)
 
 if __name__ == '__main__':

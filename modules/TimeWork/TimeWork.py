@@ -15,7 +15,6 @@ def lcm(x, y):
 	return lcm
 
 def sol_prob(Work,Value,SubValue1,SubValue2,ToFind):
-	print(Work,Value,SubValue1,SubValue2,ToFind)
 	steps = []
 	Efficiency = {'A':' ','B':' ','C':'N','AB':' ','BC':'N','AC':'N','ABC':'N'}
 	#if only two persons involved and A,B is known
