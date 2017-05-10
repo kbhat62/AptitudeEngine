@@ -13,6 +13,7 @@ class QuestionAnalyser:
         self.__fnames = filenames
         self.__labels  = labels
 
+
     def __tokenize(self,question):
         total_words = []
         sentences = sent_tokenize(question)
@@ -20,6 +21,7 @@ class QuestionAnalyser:
             words = word_tokenize(sentence)
             total_words += words
         return total_words
+
 
     def __preprocess_question(self,question):
         stop_words = self.__stop_words
@@ -31,6 +33,7 @@ class QuestionAnalyser:
         words = [w for w in words if not w in stop_words and not w.isdigit()]
         words = [lemmatizer.lemmatize(word).lower() for word in words ]
         return words
+
 
     def __preprocess(self):
         data = {}
@@ -58,6 +61,7 @@ class QuestionAnalyser:
         self.__preprocessed_data = preprocessed_data
         self.__data = data
 
+
     def __get_feature_set(self):
         feature_set = []
         for category in self.__preprocessed_data:
@@ -71,6 +75,7 @@ class QuestionAnalyser:
             feature_set = feature_set + most_com
         self.__feature_set = set(feature_set)
 
+
     def __get_features(self,question):
         words = set(question)
         word_features = self.__feature_set
@@ -79,7 +84,6 @@ class QuestionAnalyser:
             features[w] = (w in words)
 
         return features
-
 
 
     def train(self):

@@ -5,8 +5,10 @@ class Prime:
     def __init__(self):
         self.num = 2
 
+
     def get(self):
         return self.num
+
 
     def is_prime(self,num):
         upper_limit = int(math.sqrt(num)) + 1
@@ -14,6 +16,7 @@ class Prime:
             if num % i == 0:
                 return False
         return True
+
 
     def next(self):
         self.num = self.num + 1

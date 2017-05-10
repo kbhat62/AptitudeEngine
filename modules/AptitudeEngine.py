@@ -21,6 +21,8 @@ extract_parameters['relative_speed'] = extract_train.TrainsExtractParameters();
 extract_parameters['clock'] = extract_clock.ClockExtractParameters();
 extract_parameters['lcm'] = extract_lcm.LCMExtractParameters();
 extract_parameters['TimeWork'] = extract_work.TimeWorkExtractParameters();
+
+
 def format_solution(sol_dict):
     if not sol_dict:
         print("The above problem is not supported")
@@ -30,8 +32,11 @@ def format_solution(sol_dict):
     for i in range(len(steps)):
         print("Step"+str(i+1)+" : "+str(steps[i]))
 
+
 total_count = 0
 count = 0
+
+
 def batch_process():
     global total_count,count
     analyser = q.QuestionAnalyser(dataset_location,dataset_files,dataset_labels)
@@ -47,6 +52,7 @@ def batch_process():
     print("Total records %d" %(total_count))
     print("Successfull records %d" %(count))
     print("Acuuracy %.2f"%(count / total_count * 100))
+
 
 def solve(analyser,question):
     global count
@@ -71,12 +77,14 @@ def solve(analyser,question):
     ae.disconnect()
     return output
 
+
 def main():
     print("Aptitude Engine v0.5 beta")
     print("Works for AP,GP,HP, Difference in AP,GP,HP and even odd relations")
     question = input("Question:")
     analyser = q.QuestionAnalyser(dataset_location,dataset_files,dataset_labels)
     solve(analyser,question)
+
 
 if __name__ == '__main__':
     analyser = q.QuestionAnalyser(dataset_location,dataset_files,dataset_labels)

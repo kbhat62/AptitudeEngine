@@ -9,6 +9,8 @@ max_dec = 0
 #-----------------------------------------------------------------------------------------------------------------------------------------------
 #TypeA is to find greatest number of m digit that divisible by n numbers(array of numbers)
 #Input : arr_n - list of n numbers(list), m - m digit(int)
+
+
 def lcmNhcf_typeA(arr_n,m):
     greatestNnumber = 9
 
@@ -46,6 +48,8 @@ def lcmNhcf_typeA(arr_n,m):
 
 #TypeB is to find the greatest number that will divide n numbers so as to leave the same remainder in each case.
 #Input : arr_n - list of n numbers(list)
+
+
 def lcmNhcf_typeB(arr_n):
     arr_n.sort()
     new_arr = []
@@ -82,6 +86,8 @@ def lcmNhcf_typeB(arr_n):
 
 #TypeC is to find the greatest number if product of two number is given and the H.C.F of those number is given.
 #Input : prd_number - product of number (int, hcf_number - hcf of those numbers(int))
+
+
 def lcmNhcf_typeC(prd_number,hcf_number):
     dict = {'result':' ','steps':' ','type':'5','stype':'3'}
     list = ['Easy to get answer is to just dividing the product of the number with H.C.F']
@@ -95,6 +101,8 @@ def lcmNhcf_typeC(prd_number,hcf_number):
 
 #TypeD to find the greatest number which divides x1,x2,... and leaves remainder a1,a2,... respectively
 #Input : number_list - are list of number, rem_list - are their reminders respectively
+
+
 def lcmNhcf_typeD(number_list,rem_list):
 
     new_list = []
@@ -129,6 +137,8 @@ def lcmNhcf_typeD(number_list,rem_list):
 
 #TypeE is to find HCF of number when ratios and LCM is given
 #Input : ratios_arr - list of ratios(list), lcm_numbers - lcm of those number(int)
+
+
 def lcmNhcf_typeE(ratios_arr,lcm_numbers):
     product = 1
     for n in ratios_arr:
@@ -146,6 +156,8 @@ def lcmNhcf_typeE(ratios_arr,lcm_numbers):
 #TypeF to find The least number, which when divided by x, y,...   leaves in each case a remainder of a is
 #input numberlist = x,y,... and rem is a
 #Question number 25
+
+
 def lcmNhcf_typeF(numberlist,rem):
 
     i = 1
@@ -167,6 +179,8 @@ def lcmNhcf_typeF(numberlist,rem):
 #TypeG is to find the larger of n numbers when H.C.F and factors of number is given
 #Question no. 2 in indiabix.com
 #input :c_num => count of number for which HCF is given, hcf_number => HCF of the numbers, f_of_lcm => factors of LCM
+
+
 def lcmNhcf_typeG(c_num,hcf_number,f_of_lcm):
     fac_list = []
     for num in f_of_lcm:
@@ -213,6 +227,8 @@ def lcmNhcf_typeG(c_num,hcf_number,f_of_lcm):
 #-----------------------------------------------------------------------------------------------------------------------------------------------
 #TypeH is to find the HCF or GCD of numbers (also used to find the GCD OR HCF of floating numbers)
 #Input : arr - list of numbers
+
+
 def lcmNhcf_typeH(arr):
     dict = {'result':' ','steps':' ','type':'5','stype':'8'}
     i = 0
@@ -245,6 +261,8 @@ def lcmNhcf_typeH(arr):
 #-----------------------------------------------------------------------------------------------------------------------------------------------
 #TypeI is to find the least multiple of n, which leaves a remainder of m, when divided by x1,x1,x3....,xk is:
 #Input : num = n ,rem = remainder, num_list = list of x1,x2,...,xk
+
+
 def lcmNhcf_typeI(num,rem,num_list):
     lcm_value = get_lcm_for(num_list)
     i = 0
@@ -275,6 +293,8 @@ def lcmNhcf_typeI(num,rem,num_list):
 #-----------------------------------------------------------------------------------------------------------------------------------------------
 #TypeJ is to find the lcm of numbers
 #Input:  num_list = list of number for which lcm is be found
+
+
 def lcmNhcf_typeJ(num_list):
     prm = p.Prime()
     i = 0
@@ -353,6 +373,8 @@ def lcmNhcf_typeJ(num_list):
 #-----------------------------------------------------------------------------------------------------------------------------------------------
 #LCM logic
 #start
+
+
 def lcm(a, b):
     if a > b:
         greater = a
@@ -367,12 +389,15 @@ def lcm(a, b):
 
     return lcm
 
+
 def get_lcm_for(n_list):
     return reduce(lambda x, y: lcm(x, y), n_list)
 #End
 #-----------------------------------------------------------------------------------------------------------------------------------------------
 #GCD or HCF logic
 #start
+
+
 def gcd_of_numbers(arr):
     global multiplier
     global max_dec
@@ -398,6 +423,7 @@ def gcd_of_numbers(arr):
     else:
         return GCD_List(arr)
 
+
 #func to find the number of digits after decimal
 def num_after_point(x):
     s = str(x)
@@ -405,12 +431,14 @@ def num_after_point(x):
         return 0
     return len(s) - s.index('.') - 1
 
+
 def GCD(a,b):
     a = abs(a)
     b = abs(b)
     while a:
         a, b = b%a, a
     return b
+
 
 def GCD_List(list):
 	return reduce(GCD, list)

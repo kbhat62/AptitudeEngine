@@ -3,6 +3,8 @@ import diff_AP as dif
 import diff_GP as dig
 import alphabetic_series as als
 common_diff = 0;
+
+
 def ap(series,index):
 	i=0;
 	global common_diff
@@ -70,7 +72,6 @@ def hp(series,index):
 	return False
 
 
-
 def gp(series,index):
 	i=0;
 	global common_diff
@@ -105,6 +106,7 @@ def gp(series,index):
 			i = i + 1
 	common_diff = r
 	return series[index]
+
 
 def even_odd(series, index):
 #finding nth missing number
@@ -154,6 +156,7 @@ def even_odd(series, index):
 		else:
 			return False
 
+
 def addap(series,type,index):
 	dict = {'result':' ','steps':' ','type':'1','stype':'1'}
 	list = []
@@ -184,7 +187,6 @@ def addap(series,type,index):
 			dict['result'] = 'Sum = '+str(sum)
 	dict['steps'] = list
 	return dict
-
 
 
 def addgp(series,type,index):
@@ -249,6 +251,7 @@ def addhp(series,type,index):
 	dict['steps'] = list
 	return dict
 
+
 def addeven_odd(series, type, index):
 	newlist = ['Series in the form odd even numbered terms followed by a different pattern']
 	new_series = []
@@ -294,6 +297,7 @@ def addeven_odd(series, type, index):
 	#updating dictionary with new steps
 	d['steps'] = newlist + d['steps']
 	return d
+
 
 # function to find
 def solveSeries(series,index,type):

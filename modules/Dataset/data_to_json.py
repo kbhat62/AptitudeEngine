@@ -2,6 +2,8 @@
 import json
 from os import listdir
 from os.path import isfile, join
+
+
 onlyfiles = [f for f in listdir('.') if isfile(join('.', f))]
 for f_name in onlyfiles:
     if f_name[-4:] == ".txt":

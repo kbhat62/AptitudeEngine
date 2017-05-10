@@ -12,6 +12,7 @@ def newlist(series, index):
             diffrence_series.insert(i, 'x')
     return diffrence_series
 
+
 #calculating r using a and any value in list
 def find_r(diffrence_series):
     for i in range(len(diffrence_series) - 1 ):
@@ -19,6 +20,7 @@ def find_r(diffrence_series):
             r = int(math.pow(diffrence_series[i + 1] / diffrence_series[0], 1 / (i + 1)))
             break
     return round(r,2)
+
 
 #filling missing terms in list using a and r
 def fill_terms(diffrence_series, r):
@@ -30,6 +32,7 @@ def fill_terms(diffrence_series, r):
             if diffrence_series[i + 1] != int(diffrence_series[0] * math.pow(r, i + 1)):
                 return False
     return diffrence_series
+
 
 #finds 'a' of series if its missing
 def find_a(diffrence_series):
@@ -63,6 +66,7 @@ def fill_check_original_series(series, diffrence_series):
         if round(series[i] + diffrence_series[i],6) != round(series[i + 1],6):
             return False
     return True
+
 
 def solveSeries(series,index,type):
 	d = {'result':' ','steps':' ','type':'1','stype':'11'}

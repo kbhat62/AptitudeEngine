@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 #returns a difrence list calculated from original list
 
 def newlist(series, index):
@@ -12,6 +13,7 @@ def newlist(series, index):
             diffrence_series.insert(i, 'x')
     return diffrence_series
 
+
 #returns the common diffrence of the new diffrence list
 def common_diffrence(series):
     if series[0] != 'x' and series[1] != 'x':
@@ -23,6 +25,7 @@ def common_diffrence(series):
     if series[len(series) - 1] != 'x' and series[len(series) - 2] != 'x':
         d = int((series[len(series) - 1] - series[len(series) - 2]) / (len(series) - 1))
         return d
+
 
 #fills the diffrence series using d
 def fill_series(series, d):
@@ -40,6 +43,7 @@ def fill_series(series, d):
 
     return series
 
+
 #fills the original series using diffrence series and checks if diffrence is in AP
 def fill_check_original_series(series, diffrence_series):
     if series[0] == 'x':
@@ -52,11 +56,13 @@ def fill_check_original_series(series, diffrence_series):
             return False
     return True
 
+
 def check(series,comm_diff):
 	for i in range(len(series)):
 		if series[i] != series[0] + ((i) * comm_diff):
 			return False
 	return True
+
 
 def solveSeries(series,index,type):
 	d = {'result':' ','steps':' ','type':'1','stype':'10'}

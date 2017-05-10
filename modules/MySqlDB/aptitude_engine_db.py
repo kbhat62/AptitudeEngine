@@ -32,6 +32,7 @@ def insert_question(question,dictionary):
     interface.uid("INSERT INTO history (question,hits,type,stype) VALUES(\"%s\",%d,%d,%d)" %(question,hits,typ,stype))
     return interface.get_last_insert_id()
 
+
 def check_question(question):
     data = interface.select("SELECT * FROM history WHERE LOWER(question) = \"%s\"" %(question))
     try:
@@ -44,6 +45,8 @@ def check_question(question):
     except Exception as e:
         print(e)
         return False
+
+
 def view_questions(typ):
     data = interface.select("SELECT id FROM type_table WHERE LOWER(type) = '%s'" %(typ.lower()))
     type_id = data[0][0]
@@ -52,6 +55,8 @@ def view_questions(typ):
     for row in data:
         questions.append(row[0])
     return questions
+
+
 def related_question(typ,stype):
     data = interface.select("SELECT id FROM type_table WHERE LOWER(type) = '%s'" %(typ.lower()))
     print(typ)
@@ -63,9 +68,13 @@ def related_question(typ,stype):
     for row in data:
         rel_questions.append(row[0])
     return rel_questions
+
+
 def connect():
     global interface
     interface = mysql.MySQLInterface("root","root","aptitude_engine")
+
+
 def disconnect():
     global interface
     interface.close()

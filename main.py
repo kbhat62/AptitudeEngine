@@ -22,9 +22,13 @@ def add_header(response):
     response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
     response.headers['Cache-Control'] = 'public, max-age=0'
     return response
+
+
 @app.route('/')
 def main():
   return render_template('index.html')
+
+
 @app.route('/modules')
 def get_modules():
     ae.connect()
@@ -33,6 +37,7 @@ def get_modules():
         mod['image'] = url_for('static',filename = "images/" + mod['image'])
     return json.dumps(data)
     ae.disconnect()
+
 
 @app.route('/solve',methods = ['POST'])
 def wrap():
@@ -53,14 +58,18 @@ def wrap():
         dict['steps'] = list(dict['steps'])
         dict['type'],dict['stype'] = ae.get_type(int(dict['type']),int(dict['stype']))
         d['related'] = ae.related_question(dict['type'],dict['stype'])
-        return json.dumps(d)
         ae.disconnect()
+        return json.dumps(d)
+
+
 @app.route('/questions/<category>')
 def view_questions(category):
     ae.connect()
     data = ae.view_questions(category)
     ae.disconnect()
     return json.dumps(data)
+
+
 @app.route('/feedback',methods = ['POST'])
 def feedback():
     data = request.form.get("data")
@@ -69,6 +78,7 @@ def feedback():
     ae.feedback(data)
     ae.disconnect()
     return "submitted"
+
 
 if __name__ == '__main__':
     analyser = q.QuestionAnalyser(dataset_location,dataset_files,dataset_labels)
