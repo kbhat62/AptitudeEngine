@@ -67,11 +67,11 @@ class MySQLInterface:
             raise
 
 
-    # used to close the connection with database typically called when all
-    # operations are completed with the database
-    def get_last_insert_id():
+
+    def get_last_insert_id(self):
         return self.__cursor.lastrowid
 
-
+    # used to close the connection with database typically called when all
+    # operations are completed with the database
     def close(self):
         self.__db.close()

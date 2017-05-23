@@ -10,6 +10,7 @@ import extract_train
 import extract_clock
 import extract_lcm
 import extract_work
+import traceback
 #used to format the solution dictionary
 import aptitude_engine_db as ae
 dataset_labels = ["number_series","relative_speed","clock","lcm","TimeWork"]
@@ -70,10 +71,8 @@ def solve(analyser,question):
                              output['id'] = id
 
     except Exception as e:
-        exc_type, exc_obj, exc_tb = sys.exc_info()
-        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-        print(exc_type, fname, exc_tb.tb_lineno)
         output = {"error": "Oops! I can't solve it"}
+        traceback.print_exc()
     ae.disconnect()
     return output
 

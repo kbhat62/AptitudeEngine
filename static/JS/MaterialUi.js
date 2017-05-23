@@ -3,6 +3,7 @@ var state = "home";
 var question_id = undefined;
 var question = undefined;
 var clickedOn = undefined;
+var categoryClicked = undefined;
 function get_data(url,callback){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = callback;
@@ -69,20 +70,24 @@ function loadHome(){
   how.style.display = "none";
   error.style.display = "none";
 }
+
 function categoryClick(e){
   var url;
  if(this.childNodes != undefined)
- url = "http://"+location.host+"/questions/"+this.childNodes[1].innerHTML;
- else url = "http://"+location.host+"/questions/"+clickedOn;
+ categoryClicked = this.childNodes[1].innerHTML
+ else categoryClicked =clickedOn;
+ url = "http://"+location.host+"/questions/"+categoryClicked;
  showLoader();
  get_data(url,view_questions);
 }
+
 function questionClick()
 {
   var edit = document.getElementById('ques');
   edit.value = this.innerHTML;
   load_question();
 }
+
 function view_questions()
 {
   document.getElementById("first").innerHTML = "General";
@@ -112,6 +117,10 @@ function view_questions()
     how.style.display = "none";
     error.style.display = "none";
     vq.innerHTML = "";
+    var categoryName = document.createElement("DIV");
+    categoryName.id = "cat-heading";
+    categoryName.innerHTML = data.length+" questions solved under "+categoryClicked;
+    vq.appendChild(categoryName);
     for(var index in data){
       var div = document.createElement("DIV");
       div.innerHTML = data[index];
@@ -125,6 +134,7 @@ function view_questions()
   closeLoader();
   document.body.scrollTop = document.documentElement.scrollTop = 0;
 }
+
 function catPage(){
   document.getElementById("first").innerHTML = "General";
   document.getElementById("second").innerHTML = "New Feature";
@@ -170,6 +180,7 @@ function catPage(){
   get_data(url,call);
   showLoader();
 }
+
 function createModule(module,image,color){
   var mod = document.createElement('DIV');
   mod.className = "card cat";
@@ -184,6 +195,7 @@ function createModule(module,image,color){
   mod.appendChild(title);
   return mod;
 }
+
 function faqPage(){
   state = "faq";
   location.hash = state;
@@ -211,6 +223,7 @@ function faqPage(){
   how.style.display = "none";
   error.style.display = "none";
 }
+
 function howPage()
 {
   document.getElementById("first").innerHTML = "General";
@@ -239,6 +252,7 @@ function howPage()
   how.style.display = "block";
   error.style.display = "none";
 }
+
 function updateSolutionView(data)
 {
   var edit = document.getElementById('ques');
@@ -311,11 +325,13 @@ function updateSolutionView(data)
     }
   }  else errorPage(data.error);
 }
+
 function relatedClick(){
   var edit = document.getElementById('ques');
   edit.value = this.innerHTML;
   load_question();
 }
+
 function load_question() {
     var edit = document.getElementById('ques');
     if(edit.value != "" && edit.value.length >5){
@@ -340,6 +356,7 @@ function load_question() {
       }
     }else alert("Please enter a valid question");
 }
+
 function handleKeyPress(e)
 {
   if(e.keyCode == 13)
@@ -347,11 +364,13 @@ function handleKeyPress(e)
     load_question();
   }
 }
+
 window.onresize = function(){
   changeHeader();
   if(state == "question")
   load_question();
 };
+
 window.onhashchange = function(){
   switch(location.hash){
     case "#home":loadHome();
